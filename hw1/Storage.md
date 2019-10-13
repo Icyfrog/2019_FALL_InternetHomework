@@ -31,13 +31,13 @@ So in order to measure disk performance in a way which adapts to real systems, m
 
 SPEC often contains a mixture of read and write operations, which adapts to real-time systems.
 Furthermore, <b>RAID level</b> is also a key indicator.  Each RAID level generally has strengths and weaknesses when it comes to either protecting data or performance. One of the critical aspects of RAID levels when thinking about performance is the write penalty that each RAID level incurs. 
-RAID Level | Write Penalty
----        | ---------
-0|1
-1|2
-5|4
-6|6
-10|2
+|RAID Level | Write Penalty |
+|---        | --------- |
+|0|1|
+|1|2|
+|5|4|
+|6|6|
+|10|2|
 ### My own comment
 Within the last 50 years, our storage divice has improved a lot. It is now bigger, faster and stronger. Nowadays many manufacturers are working on storage devices that are not like anything we used to think. Some of them are trying to turn flash disk into real disk. Some of them has come up with the idea of binding storage with network. With network and storage bacome stronger and stronger, we may not need a disk of our own anymore in the future. 
 When it comes to disk performance, we cannot trust the throughput given by manufactures 100%. If we need to know the real performance of the disk, we nned to consider IOPS, using SPEC.
