@@ -31,6 +31,7 @@ So in order to measure disk performance in a way which adapts to real systems, m
 
 SPEC often contains a mixture of read and write operations, which adapts to real-time systems.
 Furthermore, <b>RAID level</b> is also a key indicator.  Each RAID level generally has strengths and weaknesses when it comes to either protecting data or performance. One of the critical aspects of RAID levels when thinking about performance is the write penalty that each RAID level incurs. 
+
 |RAID Level | Write Penalty |
 |---        | --------- |
 |0|1|
