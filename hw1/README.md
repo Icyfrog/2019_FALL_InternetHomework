@@ -1,12 +1,13 @@
 Homework Ⅰ 
 
 ▪ Storage, Network, xPU & Memory
+
 ▪ Deadline: Before Oct 14, 2019
 
-▪ [Storage](Stroage.md)
+▪ [Stroage.md](./Storage.md)
 
-▪ Network
+▪ [Network.md](./Network.md)
 
-▪ xPU
+▪ [xPU](./xPU.md)
 
-▪ Memory
+▪ [Memory](./Memory.md)
