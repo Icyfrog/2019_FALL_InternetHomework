@@ -4,9 +4,9 @@ Homework Ⅰ
 
 ▪ Deadline: Before Oct 14, 2019
 
-▪ [Stroage.md](./Storage.md)
+▪ [Stroage](./Storage.md)
 
-▪ [Network.md](./Network.md)
+▪ [Network](./Network.md)
 
 ▪ [xPU](./xPU.md)
 
