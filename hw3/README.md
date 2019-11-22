@@ -29,7 +29,23 @@ nodes:
 # the three workers
 - role: worker
 ``` 
-最后实验我们用的是microk8s，用两个ubuntu实例搭建了集群。==microk8s内容待补充==
+最后实验我们用的是microk8s，用两个ubuntu实例搭建了集群。（参考：[在windows上连接实例](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html), [microk8s](https://microk8s.io/docs/clustering))
+
+在AWS上申请了两个ubuntu实例，在两个实例中都安装microk8s
+
+```
+$ sudo snap install microk8s --classic --channel=1.16/stable
+```
+
+选一个作为master节点，在terminal输入
+```
+$ sudo microk8s.add-node
+```
+输入这条命令后会看到如下结果，将其中一行作为命令在另一个实例中输入，就实现了一个双节点的集群。其中需要在AWS console中给对应安全组添加入站规则，使它的端口可以被外部访问到。
+![pic](add_node.jpg)
+在master节点中get node可以看到有两个节点
+![pic](get_node.jpg)
+
 #### A custom scheduler
 这个做的和老师讲的extender的那种scheduler有一点点区别，这是一个纯custom的scheduler。代码在[这里](https://github.com/llIllIllIlllIll/naive-kube-scheduler)。部署的过程是这样子的：
 先把这个go应用打包成一个单独的容器，并且加以验证：
