@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-41
+  labels:
+    app: server
+    tir: backend
+spec:
+  containers:
+  - name: server
+    image: softpudding/surl_server_4ndb:latest
+    command: ["sudo docker run -d --network test2 --ip 11.0.0.2 softpudding/surl_server_4ndb:latest"]
+    imagePullPolicy: IfNotPresent
+    ports:
+    - hostPort: 65533
+      containerPort: 8080
+      name: httpd
+      protocol: TCP
+
+```````上面是server，下面是client
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-41
+  labels:
+    app: client
+    tir: backend
+spec:
+  containers:
+  - name: client
+    image: softpudding/surl_client_4ndb:latest
+    imagePullPolicy: IfNotPresent
+    command: ["sudo docker run -d --network test2 --ip 11.0.0.3 softpudding/surl_client_4ndb:latest"]
+    env:
+    - name: 'POOLSIZE'
+      value: '200'
+      name: 'HOST'
+      value: '11.0.0.2'
+      name: 'PORT'
+      value: '65533'
+      name: 'TASKS'
+      value: '2000'
+
+
