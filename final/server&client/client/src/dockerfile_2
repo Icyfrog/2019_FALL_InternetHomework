@@ -1,0 +1,4 @@
+FROM debian:latest
+COPY rr /usr/bin
+ENV POOLSIZE 200
+CMD ["cd /usr/bin/rr","./surl_server 8080 $POOLSIZE"]

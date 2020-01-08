@@ -1,0 +1,23 @@
+FROM debian:latest
+COPY src /usr/bin/src
+ENV POOLSIZE 200
+WORKDIR /usr/bin
+RUN apt-get update
+RUN apt-get install -y redis
+RUN apt-get install -y wget
+RUN apt-get install -y unzip
+RUN apt-get install -y gcc automake autoconf libtool make
+RUN wget https://github.com/redis/hiredis/archive/master.zip
+RUN unzip master.zip
+WORKDIR /usr/bin/hiredis-master
+RUN make
+RUN make install
+RUN mkdir /usr/lib/hiredis
+RUN mkdir /usr/include/hiredis
+RUN cp /usr/bin/hiredis-master/libhiredis.so /usr/lib/hiredis
+RUN cp /usr/bin/hiredis-master/hiredis.h /usr/include/hiredis
+RUN echo '/usr/local/lib' >>/etc/ld.so.conf
+RUN ldconfig
+WORKDIR /usr/bin/src
+RUN gcc net.h shortUrlServer.c -lpthread -lhiredis -o surl_server_2
+CMD ./surl_server_2 8080 {$POOLSIZE}
